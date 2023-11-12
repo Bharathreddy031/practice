@@ -1,0 +1,113 @@
+<!--
+    This code contains html, css and javascript 
+    points to remember
+    1.funtion calculate(id)- this function is used to give calculated values
+    2.funtion cls()- this function is used to clear all input boxes
+    3. CSS for table and input boxes
+    Here margin:auto is used to center table box in the middle of page
+    width: 30% is for width of table
+    border: 1px solid blue means border of thickness-1px; border style-solid and border-color: blue;
+    parseFloat() means to convert to float
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=4.0">
+        <title>Program1</title>
+        <style>
+            *{
+                font-size: 20px;
+                padding: 10px;
+            }
+            table,th,tr,td{
+                background-color: khaki;
+                border: 1px solid blue;
+                width: 30%;
+                text-align: center;
+            }
+            table{
+                margin: auto;
+            }
+            input{
+                width: 300px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function calculate(id)
+            {
+                var val1=parseFloat(document.getElementById("value1").value);
+                var val2=parseFloat(document.getElementById("value2").value);
+                var result=0;
+                if(isNaN(val1) || isNaN(val2))
+                {
+                    document.getElementById("answer").value="Error";
+                    document.getElementById("answer").style.color="red";
+                    document.getElementById("answer").style.backgroundColor="yellow";
+                }
+                else
+                {
+                    if(id=="+")
+                    {
+                        result=val1+val2;
+                    }
+                    else if(id=="-")
+                    {
+                        result=val1-val2;
+                    }
+                    else if(id=="*")
+                    {
+                        result=val1*val2;
+                    }
+                    else if(id="/")
+                    {
+                        result=val1/val2;
+                    }
+                    document.getElementById("answer").value=result;
+                    document.getElementById("answer").style.color="white";
+                    document.getElementById("answer").style.backgroundColor="Green";
+                }
+            }
+            function cls()
+            {
+                document.getElementById("answer").style.backgroundColor="white";
+                document.getElementById("answer").value="";
+                document.getElementById("value1").value="";
+                document.getElementById("value2").value="";
+            }
+        </script>
+        <table>
+            <tr>
+            <th colspan="2">SIMPLE CALCULATOR</th>
+            </tr>
+            <tr>
+                <th>Value 1</th>
+                <th><input type="number" id="value1"></th>
+            </tr>
+            <tr>
+                <th>Value 2</th>
+                <td><input type="number" id="value2"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Addition" id="+" onclick=calculate(this.id)></td>
+                <td><input type="button" value="Subtraction" id="-" onclick=calculate(this.id)></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Multiplication" id="*" onclick=calculate(this.id)></td>
+                <td><input type="button" value="Division" id="/" onclick=calculate(this.id)></td>
+            </tr>
+            <tr>
+                <th>Answer</th>
+                <th><input type="text" id="answer" disabled></th>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" value="Clear Values" onclick=cls()></td>
+            </tr>
+        </table>
+    </body>
+</html>
